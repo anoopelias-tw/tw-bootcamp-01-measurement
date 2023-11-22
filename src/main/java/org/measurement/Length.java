@@ -15,24 +15,22 @@ public class Length extends Measurement {
     }
 
     private enum LengthUnit implements Unit {
-        METER,
-        KILOMETER,
-        CENTIMETER;
+        METER(100),
+        KILOMETER(100000),
+        CENTIMETER(1);
 
-        private int conversionFactor() {
-            return switch (this) {
-                case KILOMETER -> 100000;
-                case METER -> 100;
-                case CENTIMETER -> 1;
-            };
+        private int conversionFactor;
+
+        LengthUnit(int conversionFactor) {
+            this.conversionFactor = conversionFactor;
         }
 
         public double toBaseUnit(double value) {
-            return value * this.conversionFactor();
+            return value * this.conversionFactor;
         }
 
         public double fromBaseUnit(double value) {
-            return value / this.conversionFactor();
+            return value / this.conversionFactor;
         }
     }
 
