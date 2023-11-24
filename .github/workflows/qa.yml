@@ -1,5 +1,7 @@
 on:
   workflow_run:
+    types:
+      - completed
     workflows:
       - Dev
 
