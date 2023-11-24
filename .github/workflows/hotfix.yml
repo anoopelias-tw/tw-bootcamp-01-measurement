@@ -1,0 +1,10 @@
+on:
+  workflow_dispatch:
+
+run-name: Hot fix
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running Sanity tests"
