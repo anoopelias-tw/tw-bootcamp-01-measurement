@@ -33,11 +33,17 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     steps:
-    - run: echo "test"
+    - run: echo "package"
     
   scan:
     runs-on: ubuntu-latest
     needs: test
     steps:
-    - run: echo "test"
+    - run: echo "scan"
+
+  integration_test:
+    runs-on: ubuntu-latest
+    needs: package
+    steps:
+    - run: echo "scan"
   
