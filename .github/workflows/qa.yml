@@ -1,0 +1,9 @@
+on:
+  workflow_run:
+    workflows:
+      - Dev
+
+jobs:
+  sanity:
+    steps:
+      - run: echo "Running Sanity tests"
