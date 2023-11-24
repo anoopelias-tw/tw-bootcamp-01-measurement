@@ -4,6 +4,7 @@ on:
       - completed
     workflows:
       - Dev
+run-name: QA stage
 
 jobs:
   sanity:
