@@ -1,0 +1,22 @@
+on:
+  workflow_run:
+    types:
+      - completed
+    workflows:
+      - QA
+
+name: UAT
+run-name: UAT stage
+
+jobs:
+
+  deploy_uat:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "deploy_uat"
+
+  sanity:
+    runs-on: ubuntu-latest
+    needs: deploy_uat
+    steps:
+      - run: echo "Running Sanity tests"

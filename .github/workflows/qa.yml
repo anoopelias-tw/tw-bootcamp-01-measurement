@@ -4,10 +4,25 @@ on:
       - completed
     workflows:
       - Dev
+
+name: QA
 run-name: QA stage
 
 jobs:
-  sanity:
+
+  deploy_qa:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Running Sanity tests"
+      - run: echo "deploy_qa"
+
+  sanity:
+    runs-on: ubuntu-latest
+    needs: deploy_qa
+    steps:
+      - run: echo "Running Sanity tests in QA"
+
+  uat_test:
+    runs-on: ubuntu-latest
+    needs: deploy_qa
+    steps:
+      - run: echo "uat_test"
