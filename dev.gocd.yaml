@@ -58,6 +58,6 @@ pipelines:
                 run_if: passed
             - exec:
                 arguments:
-                - '"Package stage 2"'
+                - '"Package task 2"'
                 command: echo
                 run_if: passed
