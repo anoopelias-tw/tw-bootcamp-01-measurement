@@ -81,8 +81,8 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - test
-                command: ./gradlew
+                - '" Test in QA pipeline"'
+                command: echo
                 run_if: passed
     - Deploy:
         fetch_materials: true
