@@ -36,14 +36,6 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          Build:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - '"Build"'
-                command: echo
-                run_if: passed
           package:
             timeout: 0
             artifacts:
