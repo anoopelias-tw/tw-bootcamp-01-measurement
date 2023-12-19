@@ -38,6 +38,10 @@ pipelines:
         jobs:
           Build:
             timeout: 0
+            artifacts:
+            - build:
+                source: gocd-artifact.txt
+                destination: gocd-artifact.txt
             tasks:
             - exec:
                 arguments:
