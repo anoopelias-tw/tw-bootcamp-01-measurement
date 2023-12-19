@@ -128,7 +128,7 @@ public class LengthTest {
 
     @Test
     public void test500MetersPlus1KilometerEquals1500Meters() {
-        Length lhs = meter(500);
+        Length lhs = meter(510);
         Length rhs = kilometer(1);
         Length result = (Length)lhs.add(rhs);
         assertTrue(meter(1500).exactlyEquals(result));
