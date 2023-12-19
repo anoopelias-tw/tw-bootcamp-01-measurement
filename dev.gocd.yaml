@@ -65,7 +65,7 @@ pipelines:
     materials:
       Dev:
         ignore_for_scheduling: false
-        pipeline: Dev-Sample
+        pipeline: Dev
         stage: Test
     stages:
     - Test:
