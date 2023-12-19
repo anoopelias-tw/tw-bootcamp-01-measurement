@@ -1,16 +1,15 @@
 format_version: 10
 pipelines:
-  Dev:
+  QA:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
-      git-48e63a1:
-        git: git@github.com-anoopelias-tw:anoopelias-tw/tw-bootcamp-01-measurement.git
-        shallow_clone: false
-        auto_update: true
-        branch: main
+      Dev:
+        ignore_for_scheduling: false
+        pipeline: Dev
+        stage: Test
     stages:
     - Test:
         fetch_materials: true
@@ -25,10 +24,10 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - test
-                command: ./gradlew
+                - '" Test in QA pipeline"'
+                command: echo
                 run_if: passed
-    - Build:
+    - Deploy:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -41,19 +40,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - '"Build"'
-                command: echo
-                run_if: passed
-          package:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - '"Package"'
-                command: echo
-                run_if: passed
-            - exec:
-                arguments:
-                - '"Package stage 2"'
+                - '"Deploy to QA"'
                 command: echo
                 run_if: passed
