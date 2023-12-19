@@ -63,11 +63,10 @@ pipelines:
     lock_behavior: none
     display_order: -1
     materials:
-      git-48e63a1:
-        git: git@github.com-anoopelias-tw:anoopelias-tw/tw-bootcamp-01-measurement.git
-        shallow_clone: false
-        auto_update: true
-        branch: main
+      Dev:
+        ignore_for_scheduling: false
+        pipeline: Dev-Sample
+        stage: Test
     stages:
     - Test:
         fetch_materials: true
