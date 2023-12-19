@@ -1,17 +1,17 @@
 format_version: 10
 pipelines:
-  prod:
+  Prod:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
-      uat:
+      UAT:
         ignore_for_scheduling: false
-        pipeline: uat
-        stage: test
+        pipeline: UAT
+        stage: Test
     stages:
-    - deploy:
+    - Test:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -19,23 +19,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          deploy:
-            timeout: 0
-            tasks:
-            - exec:
-                arguments:
-                - '"Deploy to Prod"'
-                command: echo
-
-    - test:
-        fetch_materials: true
-        keep_artifacts: false
-        clean_workspace: false
-        approval:
-          type: success
-          allow_only_on_success: false
-        jobs:
-          test:
+          Test:
             timeout: 0
             tasks:
             - exec:
@@ -43,3 +27,27 @@ pipelines:
                 - '" Test in Prod pipeline"'
                 command: echo
                 run_if: passed
+    - Deploy:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          Deploy:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - '"Deploy to Prod"'
+                command: echo
+          Sanity:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - '"Sanity test Prod"'
+                command: echo
+                run_if: passed
+
