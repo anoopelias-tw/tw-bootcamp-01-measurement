@@ -48,6 +48,3 @@ pipelines:
                 - build
                 command: ./gradlew
                 run_if: passed
-            - exec:
-                command: ls -al build/libs/
-                run_if: passed
