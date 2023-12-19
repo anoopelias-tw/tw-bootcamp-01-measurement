@@ -40,8 +40,8 @@ pipelines:
             timeout: 0
             artifacts:
             - build:
-                source: gocd-artifact.txt
-                destination: gocd-artifact.txt
+                source: tw-bootcamp-measurement-1.0-SNAPSHOT.jar
+                destination: build
             tasks:
             - exec:
                 arguments:
@@ -53,11 +53,11 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - gocd-artifact.txt
-                command: cat
+                - build
+                command: ./gradlew
                 run_if: passed
             - exec:
                 arguments:
-                - '"Package task"'
-                command: echo
+                - -al build/libs/
+                command: ls
                 run_if: passed
