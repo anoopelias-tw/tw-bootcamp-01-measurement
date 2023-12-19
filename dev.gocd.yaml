@@ -38,10 +38,6 @@ pipelines:
         jobs:
           Build:
             timeout: 0
-            artifacts:
-            - build:
-                source: build/libs/tw-bootcamp-measurement-1.0-SNAPSHOT.jar
-                destination: build
             tasks:
             - exec:
                 arguments:
@@ -50,6 +46,10 @@ pipelines:
                 run_if: passed
           package:
             timeout: 0
+            artifacts:
+            - build:
+                source: build/libs/tw-bootcamp-measurement-1.0-SNAPSHOT.jar
+                destination: build
             tasks:
             - exec:
                 arguments:
