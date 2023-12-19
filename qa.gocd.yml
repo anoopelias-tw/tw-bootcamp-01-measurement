@@ -43,3 +43,12 @@ pipelines:
                 - '"Deploy to QA"'
                 command: echo
                 run_if: passed
+          Sanity:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - '"Sanity test QA"'
+                command: echo
+                run_if: passed
+                run_if: passed

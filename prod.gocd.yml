@@ -42,5 +42,13 @@ pipelines:
                 arguments:
                 - '"Deploy to Prod"'
                 command: echo
+          Sanity:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - '"Sanity test Prod"'
+                command: echo
+                run_if: passed
                 run_if: passed
 
