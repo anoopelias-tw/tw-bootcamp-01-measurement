@@ -40,7 +40,7 @@ pipelines:
             timeout: 0
             artifacts:
             - build:
-                source: tw-bootcamp-measurement-1.0-SNAPSHOT.jar
+                source: build/libs/tw-bootcamp-measurement-1.0-SNAPSHOT.jar
                 destination: build
             tasks:
             - exec:
