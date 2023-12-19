@@ -1,14 +1,14 @@
 format_version: 10
 pipelines:
-  QA:
+  UAT:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
-      Dev:
+      QA:
         ignore_for_scheduling: false
-        pipeline: Dev
+        pipeline: QA
         stage: Test
     stages:
     - Test:
@@ -24,7 +24,7 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - '" Test in QA pipeline"'
+                - '" Test in UAT pipeline"'
                 command: echo
                 run_if: passed
     - Deploy:
@@ -40,6 +40,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - '"Deploy to QA"'
+                - '"Deploy to UAT"'
                 command: echo
                 run_if: passed
