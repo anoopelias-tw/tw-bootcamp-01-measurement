@@ -53,11 +53,11 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - '"Package"'
-                command: echo
+                - gocd-artifact.txt
+                command: cat
                 run_if: passed
             - exec:
                 arguments:
-                - '"Package task 2"'
+                - '"Package task"'
                 command: echo
                 run_if: passed
