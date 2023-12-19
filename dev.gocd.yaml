@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  Dev:
+  dev:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
@@ -12,7 +12,7 @@ pipelines:
         auto_update: true
         branch: main
     stages:
-    - Test:
+    - test:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -20,7 +20,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          Test:
+          test:
             timeout: 0
             tasks:
             - exec:
@@ -28,7 +28,7 @@ pipelines:
                 - test
                 command: ./gradlew
                 run_if: passed
-    - Build:
+    - build:
         fetch_materials: true
         keep_artifacts: true
         clean_workspace: false
@@ -49,7 +49,5 @@ pipelines:
                 command: ./gradlew
                 run_if: passed
             - exec:
-                arguments:
-                - -al build/libs/
-                command: ls
+                command: ls -al build/libs/
                 run_if: passed

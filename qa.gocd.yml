@@ -1,17 +1,17 @@
 format_version: 10
 pipelines:
-  QA:
+  qa:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
     materials:
-      Dev:
+      dev:
         ignore_for_scheduling: false
         pipeline: Dev
-        stage: Test
+        stage: build
     stages:
-    - Deploy:
+    - deploy:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -19,7 +19,7 @@ pipelines:
           type: success
           allow_only_on_success: false
         jobs:
-          Deploy:
+          deploy:
             timeout: 0
             tasks:
             - exec:
@@ -27,7 +27,7 @@ pipelines:
                 - '"Deploy to QA"'
                 command: echo
                 run_if: passed
-    - Test:
+    - test:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -40,6 +40,6 @@ pipelines:
             tasks:
             - exec:
                 arguments:
-                - '" Test in QA pipeline"'
+                - '"Test in QA pipeline"'
                 command: echo
                 run_if: passed
