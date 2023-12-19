@@ -51,4 +51,3 @@ pipelines:
                 - '"Sanity test QA"'
                 command: echo
                 run_if: passed
-                run_if: passed
