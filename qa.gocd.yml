@@ -22,6 +22,25 @@ pipelines:
           deploy:
             timeout: 0
             tasks:
+            - fetch:
+                is_file: true
+                source: build/tw-bootcamp-measurement-1.0-SNAPSHOT.jar
+                destination: ''
+                pipeline: Dev
+                stage: build
+                job: package
+                artifact_origin: gocd
+                run_if: passed
+            - exec:
+                arguments:
+                  - Fetch complete
+                command: echo
+                run_if: passed
+            - exec:
+                arguments:
+                  - -al
+                command: ls
+                run_if: passed
             - exec:
                 arguments:
                 - '"Deploy to QA"'
