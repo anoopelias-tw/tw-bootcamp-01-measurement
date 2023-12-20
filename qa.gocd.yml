@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  qa:
+  QA:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none
@@ -11,7 +11,7 @@ pipelines:
         pipeline: Dev
         stage: build
     stages:
-    - deploy:
+    - Deploy:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
@@ -27,7 +27,7 @@ pipelines:
                 - '"Deploy to QA"'
                 command: echo
                 run_if: passed
-    - test:
+    - Test:
         fetch_materials: true
         keep_artifacts: false
         clean_workspace: false
