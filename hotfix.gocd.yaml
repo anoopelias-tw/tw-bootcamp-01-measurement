@@ -9,7 +9,7 @@ pipelines:
       git-repo:
         git: git@github.com-anoopelias-tw:anoopelias-tw/tw-bootcamp-01-measurement.git
         shallow_clone: false
-        auto_update: true
+        auto_update: false
         branch: main
     stages:
     - test:
