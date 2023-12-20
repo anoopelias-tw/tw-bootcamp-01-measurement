@@ -8,8 +8,8 @@ pipelines:
     materials:
       QA:
         ignore_for_scheduling: false
-        pipeline: QA
-        stage: Test
+        pipeline: qa
+        stage: test
     stages:
     - Test:
         fetch_materials: true
